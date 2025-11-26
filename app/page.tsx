@@ -117,21 +117,21 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">User Management</h1>
-          <p className="text-gray-600">Manage your users with full CRUD operations</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">User Management</h1>
+          <p className="text-gray-600 dark:text-gray-400">Manage your users with full CRUD operations</p>
         </div>
 
         {/* Messages */}
         {error && (
-          <div className="mb-6 rounded-md bg-red-50 border border-red-200 p-4">
+          <div className="mb-6 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg
-                  className="h-5 w-5 text-red-400"
+                  className="h-5 w-5 text-red-400 dark:text-red-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -143,12 +143,12 @@ export default function Home() {
                 </svg>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-red-800">{error}</p>
+                <p className="text-sm font-medium text-red-800 dark:text-red-300">{error}</p>
               </div>
               <div className="ml-auto pl-3">
                 <button
                   onClick={() => setError(null)}
-                  className="inline-flex text-red-400 hover:text-red-600"
+                  className="inline-flex text-red-400 dark:text-red-500 hover:text-red-600 dark:hover:text-red-400"
                 >
                   <span className="sr-only">Dismiss</span>
                   <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -165,11 +165,11 @@ export default function Home() {
         )}
 
         {successMessage && (
-          <div className="mb-6 rounded-md bg-green-50 border border-green-200 p-4">
+          <div className="mb-6 rounded-md bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-4">
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg
-                  className="h-5 w-5 text-green-400"
+                  className="h-5 w-5 text-green-400 dark:text-green-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -181,7 +181,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="ml-3">
-                <p className="text-sm font-medium text-green-800">{successMessage}</p>
+                <p className="text-sm font-medium text-green-800 dark:text-green-300">{successMessage}</p>
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ export default function Home() {
             <button
               onClick={handleCreateNew}
               disabled={isSubmitting}
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <svg
                 className="-ml-1 mr-2 h-5 w-5"
@@ -215,8 +215,8 @@ export default function Home() {
 
         {/* User Form */}
         {showForm && (
-          <div className="mb-8 bg-white rounded-lg shadow p-6 border border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <div className="mb-8 bg-white dark:bg-gray-800 rounded-lg shadow p-6 border border-gray-200 dark:border-gray-700">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
               {editingUser ? 'Edit User' : 'Create New User'}
             </h2>
             <UserForm
@@ -229,8 +229,8 @@ export default function Home() {
         )}
 
         {/* User List */}
-        <div className="bg-white rounded-lg shadow border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Users</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Users</h2>
           <UserList
             users={users}
             onEdit={handleEdit}
@@ -251,7 +251,7 @@ export default function Home() {
                   }))
                 }
                 disabled={pagination.offset === 0 || isLoading}
-                className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 Previous
               </button>
@@ -263,12 +263,12 @@ export default function Home() {
                   }))
                 }
                 disabled={users.length < pagination.limit || isLoading}
-                className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 Next
               </button>
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Showing {pagination.offset + 1}-
               {pagination.offset + users.length} of users
             </div>

@@ -112,7 +112,7 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
   return (
     <div className="space-y-4">
       {errors.general && (
-        <div className="rounded-md bg-red-50 border border-red-200 p-3 text-sm text-red-800">
+        <div className="rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 text-sm text-red-800 dark:text-red-300">
           {errors.general}
         </div>
       )}
@@ -128,8 +128,8 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
           relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
           ${
             isDragging
-              ? 'border-blue-500 bg-blue-50'
-              : 'border-gray-300 hover:border-gray-400 bg-gray-50'
+              ? 'border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20'
+              : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 bg-gray-50 dark:bg-gray-800/50'
           }
           ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}
         `}
@@ -145,7 +145,7 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
 
         <div className="space-y-2">
           <svg
-            className="mx-auto h-12 w-12 text-gray-400"
+            className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500"
             stroke="currentColor"
             fill="none"
             viewBox="0 0 48 48"
@@ -157,10 +157,10 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
               strokeLinejoin="round"
             />
           </svg>
-          <div className="text-sm text-gray-600">
-            <span className="font-semibold text-blue-600">Click to upload</span> or drag and drop
+          <div className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-semibold text-blue-600 dark:text-blue-400">Click to upload</span> or drag and drop
           </div>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             PNG, JPG, GIF, WEBP up to 5MB
           </p>
         </div>
@@ -169,15 +169,15 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
       {/* Preview */}
       {preview && (
         <div className="relative">
-          <div className="border border-gray-200 rounded-lg overflow-hidden">
+          <div className="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
             <img
               src={preview}
               alt="Preview"
-              className="w-full h-auto max-h-64 object-contain bg-gray-50"
+              className="w-full h-auto max-h-64 object-contain bg-gray-50 dark:bg-gray-800"
             />
           </div>
           {selectedFile && (
-            <div className="mt-2 text-sm text-gray-600">
+            <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               <p>File: {selectedFile.name}</p>
               <p>Size: {(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
             </div>
@@ -186,7 +186,7 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
       )}
 
       {errors.file && (
-        <p className="text-sm text-red-600">{errors.file}</p>
+        <p className="text-sm text-red-600 dark:text-red-400">{errors.file}</p>
       )}
 
       {/* Upload Button */}
@@ -194,7 +194,7 @@ export default function ImageUpload({ onUpload, isLoading }: ImageUploadProps) {
         <button
           onClick={handleUpload}
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="w-full bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           {isLoading ? 'Uploading...' : 'Upload Image'}
         </button>
